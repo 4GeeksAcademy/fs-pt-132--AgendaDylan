@@ -22,9 +22,13 @@ export default function storeReducer(store, action = {}) {
     case 'updateContactData':
       return{
              ...store,
-        contactsData: action.payload.data
+        contactsData: action.data
       }
-    
+    case 'selectedContact':
+      return{
+        ...store,
+        selected : action.payload.id
+      }
     case 'add_task':
 
       const { id,  color } = action.payload

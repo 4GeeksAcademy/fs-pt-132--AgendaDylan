@@ -6,7 +6,7 @@ const url = 'https://playground.4geeks.com/contact';
 contactapi.getUser = async () => {
     try {
         console.log("Llamando a la API...");
-        const resp = await fetch(url + '/agendas/Gaby');
+        const resp = await fetch(url + '/agendas/Dylan');
         if (resp.status == 404) return contactapi.createAgenda();
         if (!resp.ok) throw new Error('Error getting agenda');
         const data = await resp.json();
@@ -24,11 +24,30 @@ contactapi.getUser = async () => {
 contactapi.createAgenda = async ()=>{
 
 try {
-   const resp= await fetch(url+'/agendas/Gaby',{
+   const resp= await fetch(url+'/agendas/Dylan',{
     method: "POST",
     headers: {
         'Content-Type': 'application/json'
     }
+   })
+    if (!resp.ok) throw new Error ('error getting agenda')
+        const data =  await resp.json ();
+    return data;
+
+} catch (error) {
+    console.log(error);
+    
+    
+}
+}
+contactapi.createContact = async (crearContact)=>{
+    try {
+   const resp= await fetch(url+'/agendas/Dylan/contacts',{
+    method: "POST",
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(crearContact)
    })
     if (!resp.ok) throw new Error ('error getting agenda')
         const data =  await resp.json ();
