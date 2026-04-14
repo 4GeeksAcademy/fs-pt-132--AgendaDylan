@@ -23,6 +23,7 @@ export const Home = () => {
 
 		);
 	}, [])
+	
 	// porque en contacts quiero saber es porque la api guarda ahi mis contactos que cree
 	return (
 		<div className="text-center mt-5">
@@ -37,7 +38,7 @@ export const Home = () => {
 		
 		
              {/*  como meterme bien a ver los datos del store */}
-			{store.contactsData.contacts?.map(el => <Card key={el.id} cid={el.id} name={el.name} phone={el.phone} email={el.email} adress={el.adress} />)}
+			{store.contactsData.contacts?.map(el => <Card key={el.id} cid={el.id} name={el.name} phone={el.phone} email={el.email} address={el.address} />)}
 
 		</div>
 

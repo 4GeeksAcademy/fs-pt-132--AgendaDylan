@@ -1,19 +1,20 @@
 import { useState } from "react"
 import contactapi from "../services/componentesApi"
-import { Link } from "react-router-dom"
+import { Link, Navigate, useNavigate } from "react-router-dom"
 
 const CrearContact = () => {
+const navigate=useNavigate()  
 const [formdata,setFormData] =  useState({
 name: "",
 phone: "",
 email: "",
-adress: ""
+address: ""
 })
 const initialState={
 name: "",
 phone: "",
 email: "",
-adress: ""
+address: ""
 
 }
 const handleChange = e =>{
@@ -28,6 +29,7 @@ const handleSubmit = e =>{
     console.log(formdata);
     contactapi.createContact(formdata)
     setFormData(initialState);
+    navigate('/home')
 }
 return (
 // pregunta para facu en que consiste los name para el crear contact
@@ -37,7 +39,7 @@ return (
   <input className="form-control" name="name" onChange={handleChange} value={formdata.name} type="text" />
   <input className="form-control" name="phone" onChange={handleChange} value={formdata.phone} type="text" />
   <input className="form-control" name="email" onChange={handleChange} value={formdata.email} type="text" />
-  <input className="form-control" name="adress" onChange={handleChange} value={formdata.adress} type="text" />
+  <input className="form-control" name="address" onChange={handleChange} value={formdata.address} type="text" />
   <input className="form-control" type="submit" />
  </form>
 <Link className="btn btn-primary" to={'/home'}> cancelar     </Link>

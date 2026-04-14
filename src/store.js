@@ -2,6 +2,7 @@ export const initialStore=()=>{
   return{
     message: null,
     contactsData: [],
+    selected:null,
     todos: [
       {
         id: 1,
@@ -27,8 +28,7 @@ export default function storeReducer(store, action = {}) {
     case 'selectedContact':
       return{
         ...store,
-        selected : action.payload.id
-      }
+        selected : store.contactsData.contacts.find(el=> el.id == action.payload.id)}
     case 'add_task':
 
       const { id,  color } = action.payload
